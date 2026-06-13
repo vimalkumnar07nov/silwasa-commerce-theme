@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Theme Variables */
+
+:root {
+
+    --primary: #22c55e;
+
+    --dark: #111827;
+
+    --light: #f8fafc;
+
+    --border: #e5e7eb;
+
+    --radius: 16px;
+
+}
