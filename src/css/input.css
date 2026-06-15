@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
-/* Theme Variables */
+/*
+|--------------------------------------------------------------------------
+| Silwasa Commerce Theme
+|--------------------------------------------------------------------------
+*/
 
 :root {
 
-    --primary: #22c55e;
+    --color-primary: #22C55E;
+    --color-primary-dark: #16A34A;
 
-    --dark: #111827;
+    --color-secondary: #F97316;
 
-    --light: #f8fafc;
+    --color-dark: #111827;
 
-    --border: #e5e7eb;
+    --color-text: #374151;
 
-    --radius: 16px;
+    --color-light: #F8FAFC;
+
+    --color-border: #E5E7EB;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
 
 }
