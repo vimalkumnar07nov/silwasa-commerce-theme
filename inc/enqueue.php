@@ -78,6 +78,18 @@ if ( ! function_exists( 'swc_enqueue_assets' ) ) {
 			true
 		);
 
+		wp_localize_script(
+			'swc-main',
+			'swc',
+			array(
+
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+
+				'nonce' => wp_create_nonce( 'swc_nonce' ),
+
+			)
+		);
+
 	}
 
 }

@@ -18,12 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <div class="hidden lg:flex gap-8">
 
-            <a href="#" id="swc-open-search">
-
-                Search
-
-            </a>
-
             <a href="#" class="hover:text-yellow-300 transition">
 
                 Track Order
