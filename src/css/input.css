@@ -26,3 +26,21 @@
     --radius-lg: 20px;
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Shop Grid
+|--------------------------------------------------------------------------
+*/
+
+.swc-product-grid {
+    @apply list-none p-0 m-0;
+}
+
+.swc-product-grid .product {
+    @apply m-0;
+}
+
+.swc-product-grid img {
+    @apply select-none;
+}
