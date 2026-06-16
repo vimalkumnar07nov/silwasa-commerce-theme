@@ -5,33 +5,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
-
-$total = WC()->cart ? WC()->cart->get_cart_total() : '$0';
+$total = WC()->cart ? WC()->cart->get_cart_total() : wc_price( 0 );
 
 ?>
 
-<a
-	href="<?php echo esc_url( wc_get_cart_url() ); ?>"
-	class="flex items-center gap-3 bg-green-600 hover:bg-green-700 transition text-white px-5 py-3 rounded-full"
->
+<button
+	id="swc-open-cart"
+	type="button"
+	class="group flex items-center gap-3 rounded-full bg-green-600 px-5 py-3 text-white transition hover:bg-green-700">
 
-	<div class="text-2xl">
+	<div class="text-2xl transition group-hover:scale-110">
 
-	🛒
+		🛒
 
 	</div>
 
-	<div>
+	<div class="text-left">
 
-		<div class="text-xs">
+		<div
+			id="swc-cart-count"
+			class="text-xs font-medium">
 
 			<?php echo esc_html( $count ); ?>
 
-			Items
+			<?php echo ( $count === 1 ) ? 'Item' : 'Items'; ?>
 
 		</div>
 
-		<div class="font-semibold">
+		<div
+			id="swc-cart-total"
+			class="font-semibold">
 
 			<?php echo wp_kses_post( $total ); ?>
 
@@ -39,4 +42,4 @@ $total = WC()->cart ? WC()->cart->get_cart_total() : '$0';
 
 	</div>
 
-</a>
+</button>

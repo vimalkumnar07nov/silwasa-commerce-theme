@@ -18,9 +18,10 @@ defined( 'ABSPATH' ) || exit;
 | These components are available site-wide and stay hidden until activated.
 */
 
-get_template_part( 'template-parts/components/search-overlay' );
+get_template_part( 'template-parts/components/search-overlay' );?>
 
-?>
+<!-- Mini Cart -->
+<?php get_template_part( 'template-parts/components/mini-cart' ); ?>
 
 <!-- Mobile Navigation -->
 <?php get_template_part( 'template-parts/layout/mobile-navigation' ); ?>
