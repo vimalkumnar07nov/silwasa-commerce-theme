@@ -90,6 +90,15 @@ if ( ! function_exists( 'swc_enqueue_assets' ) ) {
 			)
 		);
 
+		wp_enqueue_script(
+
+			'swc-search',
+			get_template_directory_uri() . '/assets/js/search.js',
+			array(),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
 	}
 
 }
