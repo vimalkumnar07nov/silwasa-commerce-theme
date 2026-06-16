@@ -278,3 +278,36 @@ if ( ! function_exists( 'swc_cart_total' ) ) {
 	}
 
 }
+
+// Brands Taxonomy
+add_action('init', function () {
+
+	register_taxonomy(
+
+		'product_brand',
+
+		'product',
+
+		array(
+
+			'label' => 'Brands',
+
+			'public' => true,
+
+			'hierarchical' => true,
+
+			'show_admin_column' => true,
+
+			'rewrite' => array(
+
+				'slug' => 'brand',
+
+			),
+
+			'show_in_rest' => true,
+
+		)
+
+	);
+
+});
