@@ -44,3 +44,35 @@
 .swc-product-grid img {
     @apply select-none;
 }
+
+/*
+|--------------------------------------------------------------------------
+| WooCommerce Loop
+|--------------------------------------------------------------------------
+*/
+
+.swc-loop-bottom {
+
+    width: 100%;
+
+}
+
+.swc-product-grid>.product {
+
+    height: 100%;
+
+}
+
+.swc-product-grid>.product>div {
+
+    height: 100%;
+
+}
+
+.swc-loading {
+
+    opacity: .6;
+
+    pointer-events: none;
+
+}
