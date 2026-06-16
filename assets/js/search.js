@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const overlay = document.getElementById("swc-search-overlay");
     const openButton = document.getElementById("swc-open-search");
+    const openMobileButton = document.getElementById("swc-open-search-mobile");
     const closeButton = document.getElementById("swc-search-close");
 
     const input = document.getElementById("swc-search-input");
@@ -75,11 +76,25 @@ document.addEventListener("DOMContentLoaded", function () {
     --------------------------------------------------------
     */
 
-    openButton.addEventListener("click", function () {
+    if (openButton) {
 
-        openSearch();
+        openButton.addEventListener("click", function () {
 
-    });
+            openSearch();
+
+        });
+
+    }
+
+    if (openMobileButton) {
+
+        openMobileButton.addEventListener("click", function () {
+
+            openSearch();
+
+        });
+
+    }
 
     if (closeButton) {
 

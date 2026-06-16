@@ -50,9 +50,10 @@ defined( 'ABSPATH' ) || exit;
 								id="swc-search-input"
 
 								type="text"
-
 								autocomplete="off"
-
+								autocapitalize="off"
+								autocorrect="off"
+								spellcheck="false"
 								placeholder="Search vegetables, fruits, dairy, snacks..."
 
 								class="w-full bg-transparent px-5 py-5 text-lg outline-none">

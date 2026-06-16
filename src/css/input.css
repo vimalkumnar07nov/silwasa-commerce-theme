@@ -119,3 +119,14 @@
     scrollbar-width: none;
 
 }
+
+/* mobile navigation */
+@media (max-width:1023px) {
+
+    body {
+
+        padding-bottom: 80px;
+
+    }
+
+}

@@ -22,6 +22,10 @@ get_template_part( 'template-parts/components/search-overlay' );
 
 ?>
 
+<!-- Mobile Navigation -->
+<?php get_template_part( 'template-parts/layout/mobile-navigation' ); ?>
+
+
 <?php wp_footer(); ?>
 
 </body>
