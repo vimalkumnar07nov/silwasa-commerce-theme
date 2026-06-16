@@ -4,6 +4,19 @@ get_header();
 
 ?>
 
+<!-- Hero section -->
+<?php get_template_part('template-parts/homepage/hero'); ?>
+<!-- Category section -->
+<?php get_template_part( 'template-parts/homepage/category-slider' ); ?>
+<!-- Flash Sale section -->
+<?php get_template_part( 'template-parts/homepage/flash-sale' ); ?>
+<!-- promo banner -->
+<?php get_template_part( 'template-parts/homepage/promo-banner' ); ?>
+
+
+
+
+
 <div class="max-w-7xl mx-auto py-20">
 
     <h1 class="text-5xl font-bold text-green-600">

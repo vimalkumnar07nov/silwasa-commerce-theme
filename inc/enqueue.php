@@ -54,6 +54,28 @@ if ( ! function_exists( 'swc_enqueue_assets' ) ) {
 			true
 		);
 
+		wp_enqueue_script(
+			'swc-slider',
+			get_template_directory_uri() . '/assets/js/slider.js',
+			array(),
+			$version,
+			true
+		);
+
+		wp_enqueue_script(
+
+			'swc-flash-sale',
+
+			get_template_directory_uri() . '/assets/js/flash-sale.js',
+
+			array(),
+
+			$version,
+
+			true
+
+		);
+
 	}
 
 }
