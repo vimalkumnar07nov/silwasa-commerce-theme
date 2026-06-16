@@ -16,7 +16,8 @@ get_header();
 <?php get_template_part( 'template-parts/homepage/featured-products' ); ?>
 <!-- Brands -->
 <?php get_template_part( 'template-parts/homepage/brands' ); ?>
-
+<!-- Newsletter -->
+<?php get_template_part( 'template-parts/homepage/newsletter' ); ?>
 
 
 
