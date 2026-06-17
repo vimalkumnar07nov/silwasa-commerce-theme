@@ -126,6 +126,7 @@ $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 			<?php if ( $cart_count > 0 ) : ?>
 
 				<span
+					id="swc-mobile-cart-count"
 					class="absolute top-1 right-4 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
 
 					<?php echo esc_html( $cart_count ); ?>

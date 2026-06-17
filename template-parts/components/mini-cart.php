@@ -63,82 +63,65 @@ if ( $subtotal > 0 ) {
 
 	</div>
 
-	<!-- Free Shipping -->
+	<?php if ( WC()->cart && ! WC()->cart->is_empty() ) : ?>
 
-	<div class="border-b p-5">
+		<!-- Free Shipping -->
 
-		<?php if ( $subtotal < $free_shipping_target ) : ?>
+		<div class="border-b p-5">
 
-			<p class="mb-3 text-sm font-medium text-slate-700">
+			<?php if ( $subtotal < $free_shipping_target ) : ?>
 
-				Add
+				<p class="mb-3 text-sm font-medium text-slate-700">
 
-				<strong>
+					Add
 
-					$
+					<strong>
 
-					<?php echo number_format( $free_shipping_target - $subtotal, 2 ); ?>
+						<?php echo wc_price( $free_shipping_target - $subtotal ); ?>
 
-				</strong>
+					</strong>
 
-				more for FREE delivery 🚚
+					more for FREE delivery 🚚
 
-			</p>
+				</p>
 
-		<?php else : ?>
+			<?php else : ?>
 
-			<p class="mb-3 font-semibold text-green-600">
+				<p class="mb-3 font-semibold text-green-600">
 
-				🎉 You unlocked FREE delivery
+					🎉 You unlocked FREE delivery
 
-			</p>
+				</p>
 
-		<?php endif; ?>
+			<?php endif; ?>
 
-		<div class="h-2 overflow-hidden rounded-full bg-slate-200">
+			<div class="h-2 overflow-hidden rounded-full bg-slate-200">
 
-			<div
+				<div
+					class="h-full rounded-full bg-green-500 transition-all duration-500"
+					style="width:<?php echo esc_attr( $progress ); ?>%">
 
-				class="h-full rounded-full bg-green-500 transition-all duration-500"
-
-				style="width:<?php echo esc_attr( $progress ); ?>%">
+				</div>
 
 			</div>
 
 		</div>
 
-	</div>
+		<!-- Items -->
 
-	<!-- Cart Items -->
+		<div
+			id="swc-mini-cart-items"
+			class="flex-1 overflow-y-auto p-5">
 
-	<div
-
-		id="swc-mini-cart-items"
-
-		class="flex-1 overflow-y-auto p-5">
-
-		<?php
-
-		if ( WC()->cart && ! WC()->cart->is_empty() ) :
+			<?php
 
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) :
 
 				$product = $cart_item['data'];
 
-				set_query_var(
-					'cart_item_key',
-					$cart_item_key
-				);
-
-				set_query_var(
-					'cart_item',
-					$cart_item
-				);
-
-				set_query_var(
-					'product',
-					$product
-				);
+				set_query_var( 'cart_item_key', $cart_item_key );
+				set_query_var( 'cart_item', $cart_item );
+				set_query_var( 'product', $product );
 
 				get_template_part(
 					'template-parts/components/mini-cart-item'
@@ -146,84 +129,86 @@ if ( $subtotal > 0 ) {
 
 			endforeach;
 
-		else :
+			?>
 
-		?>
+		</div>
 
-			<div class="py-20 text-center">
+		<!-- Footer -->
 
-				<div class="text-7xl">
+		<div class="border-t bg-white p-5">
 
-					🛒
+			<div class="mb-5 flex items-center justify-between">
+
+				<span class="text-lg font-medium text-slate-600">
+
+					Total
+
+				</span>
+
+				<div
+					id="swc-mini-cart-total"
+					class="text-2xl font-black text-slate-900">
+
+					<?php echo wp_kses_post( $cart_total ); ?>
 
 				</div>
 
-				<h3 class="mt-6 text-2xl font-bold">
-
-					Your cart is empty
-
-				</h3>
-
-				<p class="mt-3 text-slate-500">
-
-					Start shopping fresh groceries.
-
-				</p>
-
 			</div>
 
-		<?php endif; ?>
+			<div class="space-y-3">
 
-	</div>
+				<a
+					href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
+					class="flex h-14 items-center justify-center rounded-xl bg-green-600 text-lg font-bold text-white transition hover:bg-green-700">
 
-	<!-- Footer -->
+					Proceed to Checkout
 
-	<div class="border-t bg-white p-5">
+				</a>
 
-		<div class="mb-5 flex items-center justify-between">
+				<button
+					id="swc-continue-shopping"
+					class="flex h-14 w-full items-center justify-center rounded-xl border border-slate-300 font-semibold transition hover:bg-slate-100">
 
-			<span class="text-lg font-medium text-slate-600">
+					Continue Shopping
 
-				Total
-
-			</span>
-
-			<div
-
-				id="swc-mini-cart-total"
-
-				class="text-2xl font-black text-slate-900">
-
-				<?php echo wp_kses_post( $cart_total ); ?>
+				</button>
 
 			</div>
 
 		</div>
 
-		<div class="space-y-3">
+	<?php else : ?>
+
+		<div class="flex flex-1 flex-col items-center justify-center px-8 text-center">
+
+			<div class="mb-6 flex h-28 w-28 items-center justify-center rounded-full bg-green-50 text-6xl">
+
+				🛒
+
+			</div>
+
+			<h3 class="text-3xl font-bold text-slate-900">
+
+				Your cart is empty
+
+			</h3>
+
+			<p class="mt-3 max-w-xs text-slate-500">
+
+				Start shopping fresh groceries and discover thousands of everyday essentials.
+
+			</p>
 
 			<a
+				href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"
+				class="mt-8 flex h-14 w-full items-center justify-center rounded-xl bg-green-600 text-lg font-bold text-white transition hover:bg-green-700">
 
-				href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
-
-				class="flex h-14 items-center justify-center rounded-xl bg-green-600 text-lg font-bold text-white transition hover:bg-green-700">
-
-				Proceed to Checkout
+				Shop Now
 
 			</a>
 
-			<button
-
-				id="swc-continue-shopping"
-
-				class="flex h-14 w-full items-center justify-center rounded-xl border border-slate-300 font-semibold transition hover:bg-slate-100">
-
-				Continue Shopping
-
-			</button>
-
 		</div>
 
-	</div>
+	<?php endif; ?>
 
 </aside>

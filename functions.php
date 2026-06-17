@@ -23,3 +23,5 @@ require_once get_template_directory() . '/inc/helpers.php';
 require_once get_template_directory() . '/inc/woocommerce.php';
 
 require_once get_template_directory() . '/inc/customizer.php';
+
+require_once get_template_directory() . '/inc/ajax.php';
