@@ -107,9 +107,10 @@ $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 
 		<!-- Cart -->
 
-		<a
-			href="<?php echo esc_url( wc_get_cart_url() ); ?>"
-			class="relative flex flex-col items-center justify-center gap-1 text-slate-500">
+		<button
+			id="swc-open-cart-mobile"
+			type="button"
+			class="relative flex flex-col items-center justify-center gap-1 text-slate-500 w-full h-full">
 
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
 
@@ -139,7 +140,7 @@ $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 
 			</span>
 
-		</a>
+		</button>
 
 	</div>
 

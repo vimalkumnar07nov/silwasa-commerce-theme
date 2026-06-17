@@ -99,6 +99,14 @@ if ( ! function_exists( 'swc_enqueue_assets' ) ) {
 			true
 		);
 
+		wp_enqueue_script(
+			'swc-cart',
+			get_template_directory_uri() . '/assets/js/cart.js',
+			array(),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
 	}
 
 }
