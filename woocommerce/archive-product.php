@@ -1,151 +1,94 @@
 <?php
 /**
- * Shop Archive
+ * Premium AJAX Shop Archive
  *
  * @package SilwasaCommerceTheme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-get_header( 'shop' );
+get_header();
 
-do_action( 'woocommerce_before_main_content' );
 ?>
 
-<section class="swc-shop-page py-8 bg-slate-50 min-h-screen">
+<section class="bg-slate-50 min-h-screen py-8">
 
     <div class="max-w-[1440px] mx-auto px-4 lg:px-6">
 
-        <?php do_action( 'woocommerce_shop_loop_header' ); ?>
+        <?php
+
+        if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+
+            woocommerce_breadcrumb();
+
+        }
+
+        ?>
 
         <div class="flex flex-col lg:flex-row gap-8">
 
-            <!-- Sidebar -->
+            <!-- ===========================================
+            Sidebar
+            ============================================ -->
 
-            <aside class="hidden lg:block w-[280px] flex-shrink-0">
+            <aside class="hidden lg:block w-[300px] flex-shrink-0">
 
-                <div class="bg-white rounded-2xl p-6 shadow-sm sticky top-32">
+                <?php
 
-                    <h3 class="text-lg font-bold mb-6">
-                        Filters
-                    </h3>
+                get_template_part(
 
-                    <?php
-                    if ( is_active_sidebar( 'shop-sidebar' ) ) {
+                    'template-parts/shop/sidebar'
 
-                        dynamic_sidebar( 'shop-sidebar' );
+                );
 
-                    } else {
-                    ?>
-
-                        <div class="space-y-4">
-
-                            <div>
-
-                                <h4 class="font-semibold mb-2">
-                                    Categories
-                                </h4>
-
-                                <?php
-
-                                wp_list_categories(
-                                    array(
-                                        'taxonomy' => 'product_cat',
-                                        'title_li' => '',
-                                        'show_count' => true,
-                                    )
-                                );
-
-                                ?>
-
-                            </div>
-
-                        </div>
-
-                    <?php
-                    }
-                    ?>
-
-                </div>
+                ?>
 
             </aside>
 
-            <!-- Content -->
+            <!-- ===========================================
+            Shop Content
+            ============================================ -->
 
-            <div class="flex-1">
+            <main class="flex-1 min-w-0">
 
-                <div class="bg-white rounded-2xl p-5 shadow-sm mb-6">
+                <?php
 
-                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                get_template_part(
 
-                        <div>
+                    'template-parts/shop/toolbar'
 
-                            <?php woocommerce_output_all_notices(); ?>
+                );
 
-                            <?php woocommerce_result_count(); ?>
+                ?>
 
-                        </div>
+                <?php
 
-                        <div>
+                get_template_part(
 
-                            <?php woocommerce_catalog_ordering(); ?>
+                    'template-parts/shop/active-filters'
 
-                        </div>
+                );
 
-                    </div>
+                ?>
 
-                </div>
-
-                <?php if ( woocommerce_product_loop() ) : ?>
-
-                    <?php woocommerce_product_loop_start(); ?>
+                <div
+                    id="swc-shop-container"
+                    class="relative mt-6"
+                >
 
                     <?php
 
-                    while ( have_posts() ) :
+                    get_template_part(
 
-                        the_post();
+                        'template-parts/shop/product-grid'
 
-                        do_action( 'woocommerce_shop_loop' );
-
-                        wc_get_template_part(
-                            'content',
-                            'product'
-                        );
-
-                    endwhile;
+                    );
 
                     ?>
 
-                    <?php woocommerce_product_loop_end(); ?>
+                </div>
 
-                    <div class="mt-10">
-
-                        <?php woocommerce_pagination(); ?>
-
-                    </div>
-
-                <?php else : ?>
-
-                    <div class="bg-white rounded-2xl p-20 text-center shadow-sm">
-
-                        <h2 class="text-2xl font-bold mb-4">
-
-                            No Products Found
-
-                        </h2>
-
-                        <p class="text-slate-500">
-
-                            Try another category or search keyword.
-
-                        </p>
-
-                    </div>
-
-                <?php endif; ?>
-
-            </div>
+            </main>
 
         </div>
 
@@ -153,8 +96,56 @@ do_action( 'woocommerce_before_main_content' );
 
 </section>
 
+<!-- ===========================================
+Mobile Filters
+=========================================== -->
+
+<div
+    id="swc-mobile-filters"
+    class="fixed inset-0 bg-black/40 z-50 hidden lg:hidden"
+>
+
+    <div
+        class="absolute right-0 top-0 h-full w-[320px] bg-white overflow-y-auto shadow-xl"
+    >
+
+        <div class="flex items-center justify-between p-5 border-b">
+
+            <h3 class="text-lg font-bold">
+
+                Filters
+
+            </h3>
+
+            <button
+                id="swc-close-mobile-filters"
+                class="text-2xl"
+            >
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="p-5">
+
+            <?php
+
+            get_template_part(
+
+                'template-parts/shop/sidebar'
+
+            );
+
+            ?>
+
+        </div>
+
+    </div>
+
+</div>
+
 <?php
 
-do_action( 'woocommerce_after_main_content' );
-
-get_footer( 'shop' );
+get_footer();

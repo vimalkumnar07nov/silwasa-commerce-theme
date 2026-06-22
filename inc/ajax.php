@@ -138,6 +138,81 @@ add_action(
 
 /*
 |--------------------------------------------------------------------------
+| AJAX Add To Cart
+|--------------------------------------------------------------------------
+*/
+
+add_action(
+	'wp_ajax_swc_add_to_cart',
+	'swc_add_to_cart'
+);
+
+add_action(
+	'wp_ajax_nopriv_swc_add_to_cart',
+	'swc_add_to_cart'
+);
+
+function swc_add_to_cart() {
+
+	check_ajax_referer(
+		'swc_nonce',
+		'nonce'
+	);
+
+	$product_id = isset( $_POST['product_id'] )
+		? absint( $_POST['product_id'] )
+		: 0;
+
+	$quantity = isset( $_POST['quantity'] )
+		? absint( $_POST['quantity'] )
+		: 1;
+
+	if ( ! $product_id ) {
+
+		wp_send_json_error();
+
+	}
+
+	$result = WC()->cart->add_to_cart(
+
+		$product_id,
+
+		$quantity
+
+	);
+
+	if ( ! $result ) {
+
+		wp_send_json_error();
+
+	}
+
+	ob_start();
+
+	get_template_part(
+		'template-parts/components/mini-cart'
+	);
+
+	$mini_cart = ob_get_clean();
+
+	wp_send_json_success(
+
+		array(
+
+			'count' => WC()->cart->get_cart_contents_count(),
+
+			'total' => WC()->cart->get_cart_total(),
+
+			'mini_cart' => $mini_cart,
+
+		)
+
+	);
+
+}
+
+/*
+|--------------------------------------------------------------------------
 | Update Cart Quantity
 |--------------------------------------------------------------------------
 */

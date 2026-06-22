@@ -38,25 +38,27 @@ if ( have_posts() ) :
 
 	<?php
 
-	echo wp_kses_post(
+    $pagination = paginate_links(
 
-		paginate_links(
+        array(
 
-			array(
+            'prev_text' => '←',
 
-				'prev_text' => '←',
+            'next_text' => '→',
 
-				'next_text' => '→',
+            'type'      => 'list',
 
-				'type' => 'list',
+        )
 
-			)
+    );
 
-		)
+    if ( ! empty( $pagination ) ) {
 
-	);
+        echo wp_kses_post( $pagination );
 
-	?>
+    }
+
+    ?>
 
 </div>
 

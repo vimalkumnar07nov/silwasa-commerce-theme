@@ -154,6 +154,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /*
 |--------------------------------------------------------------------------
+| AJAX Add To Cart
+|--------------------------------------------------------------------------
+*/
+
+document.addEventListener("click", function (e) {
+
+    const button = e.target.closest(".swc-add-cart");
+
+    if (!button) {
+        return;
+    }
+
+    e.preventDefault();
+
+    const productId = button.dataset.productId;
+
+    button.disabled = true;
+    button.textContent = "Adding...";
+
+    const formData = new FormData();
+
+    formData.append("action", "swc_add_to_cart");
+    formData.append("nonce", swc_ajax.nonce);
+    formData.append("product_id", productId);
+    formData.append("quantity", 1);
+
+    fetch(swc_ajax.ajax_url, {
+
+        method: "POST",
+
+        body: formData
+
+    })
+
+    .then(response => response.json())
+
+    .then(response => {
+
+        if (!response.success) {
+
+            button.disabled = false;
+            button.textContent = "+ Add";
+
+            return;
+
+        }
+
+        refreshMiniCart(response.data);
+
+        button.textContent = "Added ✓";
+
+        setTimeout(() => {
+
+            button.disabled = false;
+
+            button.textContent = "+ Add";
+
+        }, 1000);
+
+    });
+
+});
+
+/*
+|--------------------------------------------------------------------------
 | AJAX Quantity & Remove
 |--------------------------------------------------------------------------
 */
@@ -180,7 +245,7 @@ document.addEventListener("click", function (event) {
 
         qty++;
 
-        updateCart(item.dataset.key, qty);
+        updateCart(item.dataset.cartKey, qty);
 
     }
 
@@ -210,7 +275,7 @@ document.addEventListener("click", function (event) {
 
         }
 
-        updateCart(item.dataset.key, qty);
+        updateCart(item.dataset.cartKey, qty);
 
     }
 
@@ -226,7 +291,7 @@ document.addEventListener("click", function (event) {
 
         event.preventDefault();
 
-        removeCartItem(remove.dataset.key);
+        removeCartItem(remove.dataset.cartKey);
 
     }
 
@@ -245,13 +310,13 @@ function updateCart(cartKey, quantity) {
 
     data.append("action", "swc_update_cart_quantity");
 
-    data.append("nonce", swc.nonce);
+    data.append("nonce", swc_ajax.nonce);
 
     data.append("cart_key", cartKey);
 
     data.append("quantity", quantity);
 
-    fetch(swc.ajaxurl, {
+    fetch(swc_ajax.ajax_url, {
 
         method: "POST",
 
@@ -286,11 +351,11 @@ function removeCartItem(cartKey) {
 
     data.append("action", "swc_remove_cart_item");
 
-    data.append("nonce", swc.nonce);
+    data.append("nonce", swc_ajax.nonce);
 
     data.append("cart_key", cartKey);
 
-    fetch(swc.ajaxurl, {
+    fetch(swc_ajax.ajax_url, {
 
         method: "POST",
 
@@ -319,26 +384,32 @@ function removeCartItem(cartKey) {
 |--------------------------------------------------------------------------
 */
 
+/*
+|--------------------------------------------------------------------------
+| Refresh Mini Cart
+|--------------------------------------------------------------------------
+*/
+
 function refreshMiniCart(data) {
+
+    if (!data || !data.mini_cart) {
+        return;
+    }
 
     const parser = new DOMParser();
 
     const html = parser.parseFromString(
-
         data.mini_cart,
-
         "text/html"
-
     );
 
     /*
     ----------------------------------------
-    Drawer
+    Replace Entire Cart Content
     ----------------------------------------
     */
 
     const newItems = html.querySelector("#swc-mini-cart-items");
-
     const oldItems = document.querySelector("#swc-mini-cart-items");
 
     if (newItems && oldItems) {
@@ -354,7 +425,6 @@ function refreshMiniCart(data) {
     */
 
     const newTotal = html.querySelector("#swc-mini-cart-total");
-
     const oldTotal = document.querySelector("#swc-mini-cart-total");
 
     if (newTotal && oldTotal) {
@@ -365,19 +435,26 @@ function refreshMiniCart(data) {
 
     /*
     ----------------------------------------
-    Header Cart
+    Header Count
     ----------------------------------------
     */
 
-    const headerCount = document.querySelector("#swc-cart-count");
+    const count = document.getElementById("swc-cart-count");
 
-    if (headerCount) {
+    if (count) {
 
-        headerCount.innerHTML = data.count + " Items";
+        count.innerHTML = data.count + " Items";
+        console.log("Header Count Updated:", data.count + " Items");
 
     }
 
-    const headerTotal = document.querySelector("#swc-cart-total");
+    /*
+    ----------------------------------------
+    Header Total
+    ----------------------------------------
+    */
+
+    const headerTotal = document.getElementById("swc-cart-total");
 
     if (headerTotal) {
 
@@ -391,12 +468,104 @@ function refreshMiniCart(data) {
     ----------------------------------------
     */
 
-    const mobileBadge = document.querySelector("#swc-mobile-cart-count");
+    const badge = document.getElementById("swc-mobile-cart-count");
 
-    if (mobileBadge) {
+    if (badge) {
 
-        mobileBadge.innerHTML = data.count;
+        badge.textContent = data.count;
+
+        if (parseInt(data.count) > 0) {
+
+            badge.classList.remove("hidden");
+
+        } else {
+
+            badge.classList.add("hidden");
+
+        }
 
     }
 
 }
+
+// function refreshMiniCart(data) {
+
+//     const parser = new DOMParser();
+
+//     const html = parser.parseFromString(
+
+//         data.mini_cart,
+
+//         "text/html"
+
+//     );
+
+//     /*
+//     ----------------------------------------
+//     Drawer
+//     ----------------------------------------
+//     */
+
+//     const newItems = html.querySelector("#swc-mini-cart-items");
+
+//     const oldItems = document.querySelector("#swc-mini-cart-items");
+
+//     if (newItems && oldItems) {
+
+//         oldItems.innerHTML = newItems.innerHTML;
+
+//     }
+
+//     /*
+//     ----------------------------------------
+//     Total
+//     ----------------------------------------
+//     */
+
+//     const newTotal = html.querySelector("#swc-mini-cart-total");
+
+//     const oldTotal = document.querySelector("#swc-mini-cart-total");
+
+//     if (newTotal && oldTotal) {
+
+//         oldTotal.innerHTML = newTotal.innerHTML;
+
+//     }
+
+//     /*
+//     ----------------------------------------
+//     Header Cart
+//     ----------------------------------------
+//     */
+
+//     const headerCount = document.querySelector("#swc-cart-count");
+
+//     if (headerCount) {
+
+//         headerCount.innerHTML = data.count + " Items";
+
+//     }
+
+//     const headerTotal = document.querySelector("#swc-cart-total");
+
+//     if (headerTotal) {
+
+//         headerTotal.innerHTML = data.total;
+
+//     }
+
+//     /*
+//     ----------------------------------------
+//     Mobile Badge
+//     ----------------------------------------
+//     */
+
+//     const mobileBadge = document.querySelector("#swc-mobile-cart-count");
+
+//     if (mobileBadge) {
+
+//         mobileBadge.innerHTML = data.count;
+
+//     }
+
+// }

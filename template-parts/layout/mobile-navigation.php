@@ -112,28 +112,32 @@ $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 			type="button"
 			class="relative flex flex-col items-center justify-center gap-1 text-slate-500 w-full h-full">
 
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+				class="w-6 h-6">
 
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-					d="M3 4h2l2 10h10l2-7H7"/>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M3 4h2l2 10h10l2-7H7"></path>
 
-				<circle cx="10" cy="20" r="1"/>
+				<circle cx="10" cy="20" r="1"></circle>
 
-				<circle cx="18" cy="20" r="1"/>
+				<circle cx="18" cy="20" r="1"></circle>
 
 			</svg>
 
-			<?php if ( $cart_count > 0 ) : ?>
+			<span
+				id="swc-mobile-cart-count"
+				class="<?php echo swc_cart_count() ? '' : 'hidden'; ?> absolute top-1 right-4 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
 
-				<span
-					id="swc-mobile-cart-count"
-					class="absolute top-1 right-4 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
+				<?php echo esc_html( swc_cart_count() ); ?>
 
-					<?php echo esc_html( $cart_count ); ?>
-
-				</span>
-
-			<?php endif; ?>
+			</span>
 
 			<span class="text-[11px] font-semibold">
 

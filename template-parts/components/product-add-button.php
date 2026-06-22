@@ -13,24 +13,17 @@ if ( ! $product ) {
 	return;
 }
 
-echo apply_filters(
+$product_id = $product->get_id();
 
-	'woocommerce_loop_add_to_cart_link',
+?>
 
-	sprintf(
+<button
+	type="button"
+	class="swc-add-cart inline-flex h-10 items-center justify-center rounded-full bg-green-600 px-5 text-sm font-semibold text-white transition hover:bg-green-700"
+	data-product-id="<?php echo esc_attr( $product_id ); ?>"
+	data-quantity="1"
+>
 
-		'<a href="%s"
-		data-quantity="1"
-		class="add_to_cart_button ajax_add_to_cart inline-flex items-center justify-center rounded-full bg-green-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-green-700">%s</a>',
+	+ Add
 
-		esc_url(
-			$product->add_to_cart_url()
-		),
-
-		esc_html__( '+ Add', 'silwasa-commerce-theme' )
-
-	),
-
-	$product
-
-);
+</button>
