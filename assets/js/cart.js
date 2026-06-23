@@ -188,32 +188,32 @@ document.addEventListener("click", function (e) {
 
     })
 
-    .then(response => response.json())
+        .then(response => response.json())
 
-    .then(response => {
+        .then(response => {
 
-        if (!response.success) {
+            if (!response.success) {
 
-            button.disabled = false;
-            button.textContent = "+ Add";
+                button.disabled = false;
+                button.textContent = "+ Add";
 
-            return;
+                return;
 
-        }
+            }
 
-        refreshMiniCart(response.data);
+            refreshMiniCart(response.data);
 
-        button.textContent = "Added ✓";
+            button.textContent = "Added ✓";
 
-        setTimeout(() => {
+            setTimeout(() => {
 
-            button.disabled = false;
+                button.disabled = false;
 
-            button.textContent = "+ Add";
+                button.textContent = "+ Add";
 
-        }, 1000);
+            }, 1000);
 
-    });
+        });
 
 });
 
@@ -324,17 +324,17 @@ function updateCart(cartKey, quantity) {
 
     })
 
-    .then(response => response.json())
+        .then(response => response.json())
 
-    .then(response => {
+        .then(response => {
 
-        if (response.success) {
+            if (response.success) {
 
-            refreshMiniCart(response.data);
+                refreshMiniCart(response.data);
 
-        }
+            }
 
-    });
+        });
 
 }
 
@@ -363,17 +363,17 @@ function removeCartItem(cartKey) {
 
     })
 
-    .then(response => response.json())
+        .then(response => response.json())
 
-    .then(response => {
+        .then(response => {
 
-        if (response.success) {
+            if (response.success) {
 
-            refreshMiniCart(response.data);
+                refreshMiniCart(response.data);
 
-        }
+            }
 
-    });
+        });
 
 }
 
