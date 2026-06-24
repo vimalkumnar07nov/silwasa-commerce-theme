@@ -8,125 +8,100 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
+
+$short_description = $product->get_short_description();
 ?>
 
 <div class="space-y-6">
 
-	<?php if ( $product->is_on_sale() ) : ?>
-
-		<div>
-
-			<span class="inline-flex bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-
-				SALE
-
-			</span>
-
-		</div>
-
-	<?php endif; ?>
-
-	<h1 class="text-4xl font-black text-slate-900">
+	<h1 class="text-xl lg:text-3xl font-bold text-slate-900">
 
 		<?php the_title(); ?>
 
 	</h1>
 
-	<div>
+	<div class="flex items-center gap-3">
 
-		<?php woocommerce_template_single_rating(); ?>
+		<div class="text-3xl font-black text-green-600">
 
-	</div>
+			<?php echo wp_kses_post( $product->get_price_html() ); ?>
 
-	<div class="text-4xl font-black text-green-600">
+		</div>
 
-		<?php echo wp_kses_post( $product->get_price_html() ); ?>
-
-	</div>
-
-	<?php if ( $product->is_in_stock() ) : ?>
-
-		<div class="inline-flex items-center gap-2 text-green-600 font-semibold">
+		<div class="text-green-600 font-semibold">
 
 			● In Stock
 
 		</div>
 
-	<?php else : ?>
+	</div>
 
-		<div class="inline-flex items-center gap-2 text-red-600 font-semibold">
+	<?php if ( $short_description ) : ?>
 
-			● Out of Stock
+		<div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+
+			<button
+				type="button"
+				id="swc-desc-toggle"
+				class="w-full flex items-center justify-between px-5 py-4 font-semibold text-left">
+
+				<span>Description</span>
+
+				<span>▼</span>
+
+			</button>
+
+			<div
+				id="swc-desc-content"
+				class="hidden px-5 pb-5 text-slate-600 leading-7">
+
+				<?php echo wp_kses_post( wpautop( $short_description ) ); ?>
+
+			</div>
 
 		</div>
 
 	<?php endif; ?>
 
-	<div class="text-slate-600 leading-7">
+	<div class="space-y-4">
 
-		<?php echo wp_kses_post( wpautop( $product->get_short_description() ) ); ?>
+        <!-- Blinkit Add Button -->
 
-	</div>
+        <div id="swc-product-action">
 
-	<form
-		class="swc-single-add-cart flex flex-wrap gap-4"
-		data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+            <button
+                type="button"
+                class="swc-product-add w-full h-12 rounded-xl bg-green-600 text-white font-bold text-base"
+                data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
 
-		<div class="flex items-center border border-slate-300 rounded-full overflow-hidden">
+                ADD
 
-			<button
-				type="button"
-				class="swc-single-minus w-12 h-12">
+            </button>
 
-				−
+        </div>
 
-			</button>
-
-			<input
-				type="number"
-				min="1"
-				value="1"
-				class="swc-single-qty w-16 text-center border-0 outline-none">
-
-			<button
-				type="button"
-				class="swc-single-plus w-12 h-12">
-
-				+
-
-			</button>
-
-		</div>
-
-		<button
-			type="button"
-			class="swc-single-add flex-1 h-12 rounded-full bg-green-600 text-white font-bold hover:bg-green-700 transition">
-
-			Add To Cart
-
-		</button>
-
-		<a
+        <a
 			href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
-			class="flex-1 h-12 rounded-full bg-slate-900 text-white font-bold flex items-center justify-center">
+			class="flex h-14 items-center justify-center rounded-xl border-2 border-green-600 bg-white text-green-600 text-lg font-bold transition hover:bg-green-50">
 
 			Buy Now
 
 		</a>
 
-	</form>
+    </div>
+		
 
-	<div class="grid grid-cols-2 gap-4 pt-4">
+	<div class="grid grid-cols-2 gap-4 pt-2">
 
 		<div class="bg-white rounded-2xl p-4 shadow-sm">
 
-			<div class="text-xs text-slate-500">
+			<div class="text-xs text-slate-500 mb-1">
 
 				SKU
 
 			</div>
 
-			<div class="font-semibold">
+			<div class="font-semibold text-slate-900">
 
 				<?php echo esc_html( $product->get_sku() ); ?>
 
@@ -136,13 +111,13 @@ global $product;
 
 		<div class="bg-white rounded-2xl p-4 shadow-sm">
 
-			<div class="text-xs text-slate-500">
+			<div class="text-xs text-slate-500 mb-1">
 
 				Category
 
 			</div>
 
-			<div class="font-semibold">
+			<div class="font-semibold text-slate-900">
 
 				<?php
 

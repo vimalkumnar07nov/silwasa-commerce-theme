@@ -185,6 +185,20 @@ function swc_enqueue_assets() {
 
 	}
 
+	wp_enqueue_script(
+
+		'swc-single-product',
+
+		get_template_directory_uri() . '/assets/js/single-product.js',
+
+		array(),
+
+		$version,
+
+		true
+
+	);
+
 	/*
 	|--------------------------------------------------------------------------
 	| AJAX

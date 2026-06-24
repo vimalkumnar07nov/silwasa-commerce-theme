@@ -9,85 +9,108 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-$product_id = $product->get_id();
-
-$main_image = get_post_thumbnail_id();
-
-$gallery_ids = $product->get_gallery_image_ids();
-
 $images = array();
 
-if ( $main_image ) {
-	$images[] = $main_image;
+$featured = get_post_thumbnail_id();
+
+if ( $featured ) {
+	$images[] = $featured;
 }
 
-if ( ! empty( $gallery_ids ) ) {
-	$images = array_merge(
-		$images,
-		$gallery_ids
-	);
+$gallery = $product->get_gallery_image_ids();
+
+if ( ! empty( $gallery ) ) {
+	$images = array_merge( $images, $gallery );
 }
 ?>
 
 <div class="space-y-4">
 
-	<div
-		id="swc-main-image"
-		class="bg-white rounded-3xl p-6 shadow-sm overflow-hidden">
+	<!-- Mobile Carousel -->
 
-		<?php
+	<div class="lg:hidden">
 
-		if ( $main_image ) {
+        <div
+            id="swc-mobile-gallery"
+            class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
 
-			echo wp_get_attachment_image(
-				$main_image,
-				'large',
-				false,
-				array(
-					'class' => 'w-full h-auto object-contain'
-				)
-			);
+            <?php foreach ( $images as $image_id ) : ?>
 
-		} else {
+                <div class="min-w-full snap-center">
 
-			echo wc_placeholder_img();
+                    <div class="bg-white rounded-3xl p-4">
 
-		}
+                        <?php
 
-		?>
+                        echo wp_get_attachment_image(
+                            $image_id,
+                            'large',
+                            false,
+                            array(
+                                'class' => 'w-full h-auto object-contain'
+                            )
+                        );
 
-	</div>
+                        ?>
 
-	<?php if ( count( $images ) > 1 ) : ?>
+                    </div>
 
-		<div class="grid grid-cols-5 gap-3">
+                </div>
 
-			<?php foreach ( $images as $image_id ) : ?>
+            <?php endforeach; ?>
 
-				<button
-					type="button"
-					class="swc-gallery-thumb bg-white rounded-xl p-2 border border-slate-200 hover:border-green-500 transition"
-					data-image="<?php echo esc_url( wp_get_attachment_image_url( $image_id, 'large' ) ); ?>">
+        </div>
 
-					<?php
+    </div>
 
-					echo wp_get_attachment_image(
-						$image_id,
-						'thumbnail',
-						false,
-						array(
-							'class' => 'w-full h-16 object-contain'
-						)
-					);
+	<!-- Desktop Gallery -->
 
-					?>
+	<div class="hidden lg:block">
 
-				</button>
+		<div
+			id="swc-main-image"
+			class="bg-white rounded-3xl p-8 shadow-sm">
 
-			<?php endforeach; ?>
+			<img
+				id="swc-product-main-image"
+				src="<?php echo esc_url( wp_get_attachment_image_url( $featured, 'large' ) ); ?>"
+				class="w-full h-auto object-contain"
+				alt="">
 
 		</div>
 
-	<?php endif; ?>
+		<?php if ( count( $images ) > 1 ) : ?>
+
+			<div class="grid grid-cols-6 gap-3 mt-4">
+
+				<?php foreach ( $images as $image_id ) : ?>
+
+					<button
+						type="button"
+						class="swc-gallery-thumb bg-white rounded-xl p-2 border border-slate-200 hover:border-green-500 transition"
+						data-image="<?php echo esc_url( wp_get_attachment_image_url( $image_id, 'large' ) ); ?>">
+
+						<?php
+
+						echo wp_get_attachment_image(
+							$image_id,
+							'thumbnail',
+							false,
+							array(
+								'class' => 'w-full h-14 object-contain'
+							)
+						);
+
+						?>
+
+					</button>
+
+				<?php endforeach; ?>
+
+			</div>
+
+		<?php endif; ?>
+
+	</div>
 
 </div>
