@@ -17,7 +17,7 @@ if ( ! $product ) {
 
 <div>
 
-	<div class="text-xl font-bold text-slate-900">
+	<div class="text-[15px] font-bold text-slate-900">
 
 		<?php echo wp_kses_post( $product->get_price_html() ); ?>
 

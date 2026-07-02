@@ -104,7 +104,7 @@ if ( ! $flash_products->have_posts() ) {
 
 		</div>
 
-		<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-5">
+		<div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6 gap-3">
 
 			<?php
 

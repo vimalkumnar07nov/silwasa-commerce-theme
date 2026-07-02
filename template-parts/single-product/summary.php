@@ -63,32 +63,34 @@ $short_description = $product->get_short_description();
 
 	<?php endif; ?>
 
-	<div class="space-y-4">
+	<div class="grid grid-cols-2 gap-3">
 
-        <!-- Blinkit Add Button -->
+		<!-- Add Button / Quantity Box -->
 
-        <div id="swc-product-action">
+		<div class="swc-product-action">
 
-            <button
-                type="button"
-                class="swc-product-add w-full h-12 rounded-xl bg-green-600 text-white font-bold text-base"
-                data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+			<button
+				type="button"
+				class="swc-product-add w-full h-12 rounded-xl bg-green-600 text-white font-bold text-base transition hover:bg-green-700"
+				data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
 
-                ADD
+				ADD
 
-            </button>
+			</button>
 
-        </div>
+		</div>
 
-        <a
+		<!-- Buy Now -->
+
+		<a
 			href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
-			class="flex h-14 items-center justify-center rounded-xl border-2 border-green-600 bg-white text-green-600 text-lg font-bold transition hover:bg-green-50">
+			class="flex h-12 items-center justify-center rounded-xl border-2 border-green-600 bg-white text-green-600 font-bold text-base transition hover:bg-green-50">
 
 			Buy Now
 
 		</a>
 
-    </div>
+	</div>
 		
 
 	<div class="grid grid-cols-2 gap-4 pt-2">

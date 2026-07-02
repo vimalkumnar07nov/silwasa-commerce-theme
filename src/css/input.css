@@ -130,3 +130,38 @@
     }
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Related Products Slider
+|--------------------------------------------------------------------------
+*/
+
+#swc-related-slider::-webkit-scrollbar {
+    display: none;
+}
+
+#swc-related-slider {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.swc-related-card {
+    width: calc(16.666% - 14px);
+}
+
+@media (max-width: 1024px) {
+
+    .swc-related-card {
+        width: calc(25% - 12px);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .swc-related-card {
+        width: calc(33.333% - 10px);
+    }
+
+}

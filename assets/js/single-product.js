@@ -51,7 +51,7 @@ if (toggle && content) {
 
 /*
 |--------------------------------------------------------------------------
-| Blinkit Add Button
+| Silwasa Add Button
 |--------------------------------------------------------------------------
 */
 
@@ -65,8 +65,12 @@ document.addEventListener("click", function (event) {
 
     const productId = addButton.dataset.productId;
 
-    const wrapper = document.getElementById(
-        "swc-product-action"
+    // const wrapper = document.getElementById(
+    //     "swc-product-action"
+    // );
+
+    const wrapper = addButton.closest(
+        ".swc-product-action"
     );
 
     wrapper.innerHTML = `
@@ -132,7 +136,7 @@ document.addEventListener("click", function (event) {
 
 /*
 |--------------------------------------------------------------------------
-| Blinkit Quantity Controls
+| Silwasa Quantity Controls
 |--------------------------------------------------------------------------
 */
 
@@ -281,3 +285,42 @@ function removeProductFromCart(productId) {
     );
 
 }
+
+// Related Products Slider(this code is copied from related-products.js)
+document.addEventListener("DOMContentLoaded", function () {
+
+    const slider = document.getElementById(
+        "swc-related-slider"
+    );
+
+    const next = document.getElementById(
+        "swc-related-next"
+    );
+
+    const prev = document.getElementById(
+        "swc-related-prev"
+    );
+
+    if (!slider) {
+        return;
+    }
+
+    next?.addEventListener("click", function () {
+
+        slider.scrollBy({
+            left: 600,
+            behavior: "smooth"
+        });
+
+    });
+
+    prev?.addEventListener("click", function () {
+
+        slider.scrollBy({
+            left: -600,
+            behavior: "smooth"
+        });
+
+    });
+
+});
