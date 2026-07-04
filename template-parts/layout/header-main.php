@@ -42,7 +42,7 @@ Grocery
 
 </div>
 
-<div class="hidden lg:flex bg-slate-100 rounded-full px-4 py-3 items-center min-w-[180px]">
+<div class="hidden lg:flex bg-slate-100 rounded px-3 py-1 items-center min-w-[180px]">
 
 📍
 

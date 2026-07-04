@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	type="button"
 
-	class="group flex h-12 md:h-14 w-full items-center rounded-full border border-slate-200 bg-slate-100 px-4 md:px-5 transition hover:border-green-500 hover:bg-white">
+	class="group flex h-12 md:h-12 w-full items-center rounded border border-slate-200 bg-slate-100 px-1 md:px-3 transition hover:border-green-500 hover:bg-white">
 
 	<svg
 

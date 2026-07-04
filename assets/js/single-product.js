@@ -1,3 +1,60 @@
+/*
+|--------------------------------------------------------------------------
+| Product Action Templates
+|--------------------------------------------------------------------------
+*/
+
+function getAddButtonHTML() {
+
+    return `
+        <button
+            type="button"
+            class="swc-product-add inline-flex h-9 w-full items-center justify-center rounded border border-green-600 bg-white px-5 text-sm font-bold text-green-600 transition hover:bg-green-50">
+
+            ADD
+
+        </button>
+    `;
+
+}
+
+function getQuantityHTML(productId, quantity = 1) {
+
+    return `
+        <div
+            class="swc-qty-wrapper flex items-center justify-between border border-green-600 rounded overflow-hidden h-9"
+            data-product-id="${productId}">
+
+            <button
+                type="button"
+                class="swc-qty-minus flex h-full w-9 items-center justify-center text-lg font-bold">
+
+                −
+
+            </button>
+
+            <span
+                class="swc-current-qty text-sm font-bold">
+
+                ${quantity}
+
+            </span>
+
+            <button
+                type="button"
+                class="swc-qty-plus flex h-full w-9 items-center justify-center text-lg font-bold">
+
+                +
+
+            </button>
+
+        </div>
+    `;
+
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
     /*
@@ -63,46 +120,13 @@ document.addEventListener("click", function (event) {
         return;
     }
 
-    const productId = addButton.dataset.productId;
-
-    // const wrapper = document.getElementById(
-    //     "swc-product-action"
-    // );
-
     const wrapper = addButton.closest(
         ".swc-product-action"
     );
 
-    wrapper.innerHTML = `
-        <div
-            class="swc-qty-wrapper flex items-center justify-between border border-green-600 rounded-xl overflow-hidden h-12"
-            data-product-id="${productId}">
+    const productId = wrapper.dataset.productId;
 
-            <button
-                type="button"
-                class="swc-qty-minus w-12 h-full text-xl font-bold">
-
-                −
-
-            </button>
-
-            <span
-                class="swc-current-qty font-bold">
-
-                1
-
-            </span>
-
-            <button
-                type="button"
-                class="swc-qty-plus w-12 h-full text-xl font-bold">
-
-                +
-
-            </button>
-
-        </div>
-    `;
+    wrapper.innerHTML = getQuantityHTML(productId, 1);
 
     const formData = new FormData();
 
@@ -196,14 +220,7 @@ document.addEventListener("click", function (event) {
 
             removeProductFromCart(productId);
 
-            wrapper.outerHTML = `
-                <button
-                    type="button"
-                    class="swc-product-add w-full h-12 rounded-xl bg-green-600 text-white font-bold"
-                    data-product-id="${productId}">
-                    ADD
-                </button>
-            `;
+            wrapper.innerHTML = getAddButtonHTML();
 
             return;
 

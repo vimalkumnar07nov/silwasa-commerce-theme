@@ -12,12 +12,10 @@ $total = WC()->cart ? WC()->cart->get_cart_total() : wc_price( 0 );
 <button
 	id="swc-open-cart"
 	type="button"
-	class="group flex items-center gap-3 rounded-full bg-green-600 px-5 py-3 text-white transition hover:bg-green-700">
+	class="group flex items-center gap-1 rounded bg-green-600 px-3 py-1 text-white transition hover:bg-green-700">
 
 	<div class="text-2xl transition group-hover:scale-110">
-
 		🛒
-
 	</div>
 
 	<div class="text-left">

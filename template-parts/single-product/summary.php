@@ -67,12 +67,13 @@ $short_description = $product->get_short_description();
 
 		<!-- Add Button / Quantity Box -->
 
-		<div class="swc-product-action">
+		<div
+			class="swc-product-action"
+			data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
 
 			<button
 				type="button"
-				class="swc-product-add w-full h-12 rounded-xl bg-green-600 text-white font-bold text-base transition hover:bg-green-700"
-				data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+				class="swc-product-add w-full h-12 rounded-xl bg-green-600 text-white font-bold text-base transition hover:bg-green-700">
 
 				ADD
 

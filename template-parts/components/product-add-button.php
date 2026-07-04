@@ -13,17 +13,18 @@ if ( ! $product ) {
 	return;
 }
 
-$product_id = $product->get_id();
-
 ?>
 
-<button
-	type="button"
-	class="swc-add-cart inline-flex h-9 min-w-[82px] items-center justify-center rounded-full bg-green-600 px-5 text-sm font-semibold text-white transition hover:bg-green-700"
-	data-product-id="<?php echo esc_attr( $product_id ); ?>"
-	data-quantity="1"
->
+<div
+	class="swc-product-action"
+	data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
 
-	+ Add
+	<button
+		type="button"
+		class="swc-product-add inline-flex h-9 w-full items-center justify-center rounded border-2 border-green-600 bg-white px-5 text-[13px] font-bold text-green-600 transition hover:bg-green-50">
 
-</button>
+		ADD
+
+	</button>
+
+</div>

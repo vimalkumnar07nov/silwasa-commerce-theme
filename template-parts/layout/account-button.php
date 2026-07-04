@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>"
 
-class="flex items-center gap-3 border border-slate-200 hover:border-green-600 hover:text-green-600 transition px-5 py-3 rounded-full"
+class="flex items-center gap-1 border border-slate-200 hover:border-green-600 hover:text-green-600 transition px-3 py-1 rounded"
 
 >
 

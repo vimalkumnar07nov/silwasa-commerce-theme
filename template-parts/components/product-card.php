@@ -57,7 +57,7 @@ if ( ! $product || ! $product->is_visible() ) {
 
 		<?php get_template_part( 'template-parts/components/product-rating' ); ?>
 
-		<h3 class="line-clamp-2 text-[14px] font-medium leading-5 text-slate-800"">
+		<h3 class="line-clamp-2 text-[13px] font-medium leading-5 text-slate-800"">
 
 			<a href="<?php the_permalink(); ?>">
 
