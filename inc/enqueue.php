@@ -199,6 +199,14 @@ function swc_enqueue_assets() {
 
 	);
 
+	wp_enqueue_script(
+		'swc-single-product-tabs',
+		get_template_directory_uri() . '/assets/js/single-product-tabs.js',
+		array(),
+		$version,
+		true
+	);
+
 	/*
 	|--------------------------------------------------------------------------
 	| AJAX

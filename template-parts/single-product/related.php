@@ -37,7 +37,7 @@ if ( ! $query->have_posts() ) {
 
 	<div class="flex items-center justify-between mb-6">
 
-		<h2 class="text-2xl lg:text-3xl font-black text-slate-900">
+		<h2 class="text-lg lg:text-xl font-black text-slate-900">
 
 			Related Products
 

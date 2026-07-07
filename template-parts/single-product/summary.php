@@ -14,7 +14,7 @@ $short_description = $product->get_short_description();
 
 <div class="space-y-6">
 
-	<h1 class="text-xl lg:text-3xl font-bold text-slate-900">
+	<h1 class="text-base lg:text-xl font-bold text-slate-900">
 
 		<?php the_title(); ?>
 
@@ -22,7 +22,7 @@ $short_description = $product->get_short_description();
 
 	<div class="flex items-center gap-3">
 
-		<div class="text-3xl font-black text-green-600">
+		<div class="flex flex-row-reverse gap-3 text-[16px] font-black text-green-600">
 
 			<?php echo wp_kses_post( $product->get_price_html() ); ?>
 
@@ -73,7 +73,7 @@ $short_description = $product->get_short_description();
 
 			<button
 				type="button"
-				class="swc-product-add w-full h-12 rounded-xl bg-green-600 text-white font-bold text-base transition hover:bg-green-700">
+				class="swc-product-add inline-flex h-9 w-full items-center justify-center rounded border-2 bg-green-600 text-white font-bold text-base transition hover:bg-green-700">
 
 				ADD
 
@@ -85,7 +85,7 @@ $short_description = $product->get_short_description();
 
 		<a
 			href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
-			class="flex h-12 items-center justify-center rounded-xl border-2 border-green-600 bg-white text-green-600 font-bold text-base transition hover:bg-green-50">
+			class="flex h-9 items-center justify-center rounded border-2 border-green-600 bg-white text-green-600 font-bold text-base transition hover:bg-green-50">
 
 			Buy Now
 
@@ -96,7 +96,7 @@ $short_description = $product->get_short_description();
 
 	<div class="grid grid-cols-2 gap-4 pt-2">
 
-		<div class="bg-white rounded-2xl p-4 shadow-sm">
+		<div class="bg-white rounded p-3 shadow-sm">
 
 			<div class="text-xs text-slate-500 mb-1">
 
@@ -104,7 +104,7 @@ $short_description = $product->get_short_description();
 
 			</div>
 
-			<div class="font-semibold text-slate-900">
+			<div class="text-[14px] text-slate-700">
 
 				<?php echo esc_html( $product->get_sku() ); ?>
 
@@ -112,7 +112,7 @@ $short_description = $product->get_short_description();
 
 		</div>
 
-		<div class="bg-white rounded-2xl p-4 shadow-sm">
+		<div class="bg-white rounded p-3 shadow-sm">
 
 			<div class="text-xs text-slate-500 mb-1">
 
@@ -120,7 +120,7 @@ $short_description = $product->get_short_description();
 
 			</div>
 
-			<div class="font-semibold text-slate-900">
+			<div class="text-[14px] text-slate-700">
 
 				<?php
 

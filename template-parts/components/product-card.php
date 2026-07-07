@@ -33,7 +33,7 @@ if ( ! $product || ! $product->is_visible() ) {
 
 					array(
 
-						'class' => 'mx-auto w-full object-contain transition duration-300 group-hover:scale-105',
+						'class' => 'aspect-square mx-auto w-full object-contain transition duration-300 group-hover:scale-105',
 
 						'loading' => 'lazy',
 
