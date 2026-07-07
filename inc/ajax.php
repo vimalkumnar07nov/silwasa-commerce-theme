@@ -131,6 +131,32 @@ add_action(
 
 );
 
+// product page ajax add to cart
+// helper function to get the products in the cart and their quantities
+/*
+|--------------------------------------------------------------------------
+| Cart Products Map
+|--------------------------------------------------------------------------
+*/
+
+function swc_get_cart_products_map() {
+
+	$products = array();
+
+	foreach ( WC()->cart->get_cart() as $item ) {
+
+		$product_id = (int) $item['product_id'];
+
+		$products[ $product_id ] = (int) $item['quantity'];
+
+	}
+
+	return $products;
+
+}
+
+
+
 /*
 |--------------------------------------------------------------------------
 | AJAX Add To Cart
@@ -198,6 +224,8 @@ function swc_add_to_cart() {
 			'total' => WC()->cart->get_cart_total(),
 
 			'mini_cart' => $mini_cart,
+
+			'products'  => swc_get_cart_products_map(),
 		)
 	);
 
@@ -255,6 +283,8 @@ function swc_ajax_update_cart_quantity() {
 			'total' => WC()->cart->get_cart_total(),
 
 			'mini_cart' => $mini_cart,
+
+			'products'  => swc_get_cart_products_map(),
 		)
 	);
 
@@ -323,6 +353,8 @@ function swc_ajax_remove_cart_item() {
 			'total' => WC()->cart->get_cart_total(),
 
 			'mini_cart' => $mini_cart,
+
+			'products'  => swc_get_cart_products_map(),
 		)
 	);
 
@@ -371,6 +403,8 @@ function swc_ajax_refresh_mini_cart() {
 			'total' => WC()->cart->get_cart_total(),
 
 			'mini_cart' => $mini_cart,
+
+			'products'  => swc_get_cart_products_map(),
 		)
 	);
 
@@ -489,6 +523,8 @@ function swc_ajax_update_single_product_qty() {
 			'total'     => WC()->cart->get_cart_total(),
 
 			'mini_cart' => $mini_cart,
+
+			'products'  => swc_get_cart_products_map(),
 
 		)
 	);

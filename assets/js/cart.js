@@ -380,12 +380,6 @@ function removeCartItem(cartKey) {
 
 /*
 |--------------------------------------------------------------------------
-| Refresh UI
-|--------------------------------------------------------------------------
-*/
-
-/*
-|--------------------------------------------------------------------------
 | Refresh Mini Cart
 |--------------------------------------------------------------------------
 */
@@ -485,87 +479,44 @@ function refreshMiniCart(data) {
         }
 
     }
+    refreshProductActions(data);
 
 }
 
-// function refreshMiniCart(data) {
+// when mini cart is updated, refresh the product actions on the page
 
-//     const parser = new DOMParser();
+/*
+|--------------------------------------------------------------------------
+| Refresh Product Actions
+|--------------------------------------------------------------------------
+*/
 
-//     const html = parser.parseFromString(
+function refreshProductActions(data) {
 
-//         data.mini_cart,
+    if (!data.products) {
+        return;
+    }
 
-//         "text/html"
+    document.querySelectorAll(".swc-product-action").forEach(function(wrapper) {
 
-//     );
+        const productId = wrapper.dataset.productId;
 
-//     /*
-//     ----------------------------------------
-//     Drawer
-//     ----------------------------------------
-//     */
+        if (!productId) {
+            return;
+        }
 
-//     const newItems = html.querySelector("#swc-mini-cart-items");
+        const qty = data.products[productId] || 0;
 
-//     const oldItems = document.querySelector("#swc-mini-cart-items");
+        if (qty > 0) {
 
-//     if (newItems && oldItems) {
+            wrapper.innerHTML = getQuantityHTML(productId, qty);
 
-//         oldItems.innerHTML = newItems.innerHTML;
+        } else {
 
-//     }
+            wrapper.innerHTML = getAddButtonHTML(productId);
 
-//     /*
-//     ----------------------------------------
-//     Total
-//     ----------------------------------------
-//     */
+        }
 
-//     const newTotal = html.querySelector("#swc-mini-cart-total");
+    });
 
-//     const oldTotal = document.querySelector("#swc-mini-cart-total");
-
-//     if (newTotal && oldTotal) {
-
-//         oldTotal.innerHTML = newTotal.innerHTML;
-
-//     }
-
-//     /*
-//     ----------------------------------------
-//     Header Cart
-//     ----------------------------------------
-//     */
-
-//     const headerCount = document.querySelector("#swc-cart-count");
-
-//     if (headerCount) {
-
-//         headerCount.innerHTML = data.count + " Items";
-
-//     }
-
-//     const headerTotal = document.querySelector("#swc-cart-total");
-
-//     if (headerTotal) {
-
-//         headerTotal.innerHTML = data.total;
-
-//     }
-
-//     /*
-//     ----------------------------------------
-//     Mobile Badge
-//     ----------------------------------------
-//     */
-
-//     const mobileBadge = document.querySelector("#swc-mobile-cart-count");
-
-//     if (mobileBadge) {
-
-//         mobileBadge.innerHTML = data.count;
-
-//     }
-
-// }
+}

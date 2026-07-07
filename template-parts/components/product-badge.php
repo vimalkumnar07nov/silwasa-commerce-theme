@@ -32,11 +32,11 @@ if ( $sale && $regular > $sale ) {
 
 		</span>
 
-		<span class="rounded-full bg-green-600 px-3 py-1 text-xs font-semibold text-white">
+		<!-- <span class="rounded-full bg-green-600 px-3 py-1 text-xs font-semibold text-white">
 
 			Fresh
 
-		</span>
+		</span> -->
 
 	</div>
 
