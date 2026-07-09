@@ -33,17 +33,17 @@ $cart_total = function_exists( 'swc_cart_total' )
 
 	<!-- Header -->
 
-	<div class="border-b border-slate-200 p-5">
+	<div class="border-b border-slate-200 p-3">
 
 		<div class="flex items-center justify-between">
 
 			<div>
 
-				<h2 class="text-2xl font-bold text-slate-900">
+				<h3 class="text-lg font-bold text-slate-900">
 
 					Shopping Cart
 
-				</h2>
+				</h3>
 
 				<p
 					id="swc-cart-count"
@@ -88,7 +88,7 @@ $cart_total = function_exists( 'swc_cart_total' )
 
 	<div
 		id="swc-mini-cart-footer"
-		class="border-t border-slate-200 bg-white p-5">
+		class="border-t border-slate-200 bg-white p-3">
 
 		<div class="mb-5 flex items-center justify-between">
 
@@ -102,7 +102,7 @@ $cart_total = function_exists( 'swc_cart_total' )
 
 				<div
 					id="swc-mini-cart-total"
-					class="text-2xl font-black text-slate-900">
+					class="text-lg font-black text-slate-900">
 
 					<?php echo wp_kses_post( $cart_total ?: '' ); ?>
 
@@ -112,11 +112,11 @@ $cart_total = function_exists( 'swc_cart_total' )
 
 		</div>
 
-		<div class="space-y-3">
+		<div class="flex gap-3 space-y-3">
 
 			<a
 				href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
-				class="flex h-14 w-full items-center justify-center rounded-xl bg-green-600 text-lg font-bold text-white transition hover:bg-green-700">
+				class="swc-btn swc-btn-primary w-full">
 
 				Proceed to Checkout
 
@@ -125,7 +125,7 @@ $cart_total = function_exists( 'swc_cart_total' )
 			<button
 				type="button"
 				id="swc-continue-shopping"
-				class="flex h-14 w-full items-center justify-center rounded-xl border border-slate-300 bg-white font-semibold transition hover:bg-slate-100">
+				class="swc-btn swc-btn-secondary w-full">
 
 				Continue Shopping
 

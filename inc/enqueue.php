@@ -215,17 +215,11 @@ function swc_enqueue_assets() {
 
 	$localize = array(
 
-		'ajax_url' => admin_url(
+		'ajax_url' => admin_url('admin-ajax.php'),
 
-			'admin-ajax.php'
+		'ajaxurl'  => admin_url('admin-ajax.php'),
 
-		),
-
-		'nonce' => wp_create_nonce(
-
-			'swc_nonce'
-
-		),
+		'nonce' => wp_create_nonce('swc_nonce'),
 
 		'cart_url' => wc_get_cart_url(),
 

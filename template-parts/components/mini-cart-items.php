@@ -50,7 +50,7 @@ if ( $cart->is_empty() ) :
 
 		</div>
 
-		<h3 class="text-3xl font-bold text-slate-900">
+		<h3 class="text-lg font-bold text-slate-900">
 
 			Your cart is empty
 
@@ -64,7 +64,7 @@ if ( $cart->is_empty() ) :
 
 		<a
 			href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"
-			class="mt-8 inline-flex h-14 items-center justify-center rounded-xl bg-green-600 px-8 text-lg font-bold text-white transition hover:bg-green-700">
+			class="swc-btn swc-btn swc-btn-outline">
 
 			Shop Now
 
@@ -124,7 +124,7 @@ endif;
 
 <!-- Cart Items -->
 
-<div class="space-y-4 p-5">
+<div class="space-y-4 p-3">
 
 	<?php
 

@@ -26,6 +26,7 @@ function swc_ajax_product_search() {
 		$keyword = sanitize_text_field(
 			wp_unslash( $_POST['keyword'] )
 		);
+
 	}
 
 	if ( strlen( $keyword ) < 2 ) {

@@ -9,7 +9,7 @@ function getAddButtonHTML() {
     return `
         <button
             type="button"
-            class="swc-product-add inline-flex h-9 w-full items-center justify-center rounded border border-green-600 bg-white px-5 text-sm font-bold text-green-600 transition hover:bg-green-50">
+            class="swc-product-add swc-btn swc-btn-outline swc-btn-sm w-full">
 
             ADD
 
@@ -22,12 +22,12 @@ function getQuantityHTML(productId, quantity = 1) {
 
     return `
         <div
-            class="swc-qty-wrapper flex items-center justify-between border border-green-600 rounded overflow-hidden h-9"
+            class="swc-qty-wrapper w-full flex items-center justify-between border border-green-600 rounded overflow-hidden h-9"
             data-product-id="${productId}">
 
             <button
                 type="button"
-                class="swc-qty-minus flex h-full w-9 items-center justify-center text-lg font-bold">
+                class="swc-qty-minus w-full">
 
                 −
 
@@ -42,7 +42,7 @@ function getQuantityHTML(productId, quantity = 1) {
 
             <button
                 type="button"
-                class="swc-qty-plus flex h-full w-9 items-center justify-center text-lg font-bold">
+                class="swc-qty-plus w-full">
 
                 +
 

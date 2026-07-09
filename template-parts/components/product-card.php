@@ -15,7 +15,7 @@ if ( ! $product || ! $product->is_visible() ) {
 
 ?>
 
-<div class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+<div class="swc-card group relative rounded">
 
 	<?php get_template_part( 'template-parts/components/product-badge' ); ?>
 
@@ -57,7 +57,7 @@ if ( ! $product || ! $product->is_visible() ) {
 
 		<?php get_template_part( 'template-parts/components/product-rating' ); ?>
 
-		<h3 class="line-clamp-2 text-[13px] font-medium leading-5 text-slate-800"">
+		<h6 class="line-clamp-2 text-[13px] font-medium leading-5 text-slate-800"">
 
 			<a href="<?php the_permalink(); ?>">
 
@@ -65,7 +65,7 @@ if ( ! $product || ! $product->is_visible() ) {
 
 			</a>
 
-		</h3>
+		</h6>
 
 		<div class="text-xs text-slate-500">
 

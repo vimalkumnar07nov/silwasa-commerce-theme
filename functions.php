@@ -29,6 +29,8 @@ require_once get_template_directory() . '/inc/menus.php';
 
 require_once get_template_directory() . '/inc/woocommerce.php';
 
+require_once get_template_directory() . '/inc/my-account.php';
+
 /*
 |--------------------------------------------------------------------------
 | AJAX

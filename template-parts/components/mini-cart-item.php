@@ -68,16 +68,16 @@ $item_data = wc_get_formatted_cart_item_data(
 ?>
 
 <div
-	class="swc-mini-cart-item rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md"
+	class="swc-mini-cart-item rounded border border-slate-200 bg-white p-2 shadow-sm transition hover:shadow-md"
 	data-cart-key="<?php echo esc_attr( $cart_item_key ); ?>">
 
-	<div class="flex gap-4">
+	<div class="flex gap-4 relative">
 
 		<!-- Image -->
 
 		<a
 			href="<?php echo esc_url( $link ); ?>"
-			class="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-100">
+			class="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-100">
 
 			<img
 				src="<?php echo esc_url( $image ); ?>"
@@ -93,7 +93,7 @@ $item_data = wc_get_formatted_cart_item_data(
 
 			<a
 				href="<?php echo esc_url( $link ); ?>"
-				class="line-clamp-2 text-base font-bold leading-6 text-slate-900 transition hover:text-green-600">
+				class="line-clamp-2 text-[13px] font-bold leading-6 text-slate-900 transition hover:text-green-600">
 
 				<?php echo esc_html( $name ); ?>
 
@@ -109,13 +109,13 @@ $item_data = wc_get_formatted_cart_item_data(
 
 			<?php endif; ?>
 
-			<div class="mt-2 text-lg font-black text-green-600">
+			<div class="mt-2 text-sm font-black text-green-600">
 
 				<?php echo wp_kses_post( $price_html ?: '' ); ?>
 
 			</div>
 
-			<div class="mt-4 flex items-center justify-between gap-3">
+			<div class="mt-2 flex items-center justify-between gap-3">
 
 				<!-- Quantity -->
 
@@ -123,7 +123,7 @@ $item_data = wc_get_formatted_cart_item_data(
 
 					<button
 						type="button"
-						class="swc-cart-minus flex h-9 w-9 items-center justify-center text-lg font-bold transition hover:bg-slate-200"
+						class="swc-cart-minus flex h-8 w-8 items-center justify-center text-lg font-bold transition hover:bg-slate-200"
 						data-key="<?php echo esc_attr( $cart_item_key ); ?>">
 
 						−
@@ -131,7 +131,7 @@ $item_data = wc_get_formatted_cart_item_data(
 					</button>
 
 					<span
-						class="swc-cart-qty flex min-w-[36px] items-center justify-center text-sm font-bold">
+						class="swc-cart-qty flex min-w-[32px] items-center justify-center text-sm font-bold">
 
 						<?php echo esc_html( $quantity ); ?>
 
@@ -139,7 +139,7 @@ $item_data = wc_get_formatted_cart_item_data(
 
 					<button
 						type="button"
-						class="swc-cart-plus flex h-9 w-9 items-center justify-center text-lg font-bold transition hover:bg-slate-200"
+						class="swc-cart-plus flex h-8 w-8 items-center justify-center text-lg font-bold transition hover:bg-slate-200"
 						data-cart-key="<?php echo esc_attr( $cart_item_key ); ?>">
 
 						+
@@ -170,7 +170,7 @@ $item_data = wc_get_formatted_cart_item_data(
 
 			<button
 				type="button"
-				class="swc-remove-item mt-4 inline-flex w-fit items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-red-500 transition hover:bg-red-50"
+				class="swc-remove-item absolute top-0 right-0 mt-2 inline-flex w-fit items-center cursor-pointer gap-2 rounded-lg px-1 py-1 text-sm font-semibold text-red-500 transition hover:bg-red-50"
 				data-cart-key="<?php echo esc_attr( $cart_item_key ); ?>">
 
 				<svg
@@ -187,8 +187,6 @@ $item_data = wc_get_formatted_cart_item_data(
 						d="M19 7H5M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
 
 				</svg>
-
-				Remove
 
 			</button>
 

@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const keyword = this.value.trim();
 
-        if (keyword.length < 2) {
+        if (keyword.length < 3) {
 
             results.innerHTML = "";
 
