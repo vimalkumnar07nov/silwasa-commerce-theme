@@ -162,6 +162,7 @@ function swc_enqueue_assets() {
 		);
 
 	}
+	
 
 	if ( is_front_page() ) {
 
@@ -187,11 +188,11 @@ function swc_enqueue_assets() {
 
 	wp_enqueue_script(
 
-		'swc-single-product',
+		'swc-add-to-cart',
 
-		get_template_directory_uri() . '/assets/js/single-product.js',
+		get_template_directory_uri() . '/assets/js/add-to-cart.js',
 
-		array(),
+		array('swc-main'),
 
 		$version,
 
@@ -199,13 +200,31 @@ function swc_enqueue_assets() {
 
 	);
 
-	wp_enqueue_script(
-		'swc-single-product-tabs',
-		get_template_directory_uri() . '/assets/js/single-product-tabs.js',
-		array(),
-		$version,
-		true
-	);
+	if (is_product()) {
+
+		wp_enqueue_script(
+			'swc-single-product-tabs',
+			get_template_directory_uri() . '/assets/js/single-product-tabs.js',
+			array('swc-main'),
+			$version,
+			true
+		);
+
+		wp_enqueue_script(
+
+			'swc-single-product',
+
+			get_template_directory_uri() . '/assets/js/single-product.js',
+
+			array('swc-main'),
+
+			$version,
+
+			true
+
+		);
+		
+	}
 
 	/*
 	|--------------------------------------------------------------------------
@@ -247,6 +266,34 @@ function swc_enqueue_assets() {
 		'swc',
 		$localize
 	);
+
+	// Defer loading of scripts to the footer
+
+	$scripts = array(
+		'swc-main',
+		'swc-header',
+		'swc-mobile-menu',
+		'swc-search',
+		'swc-cart',
+		'swc-shop',
+		'swc-slider',
+		'swc-single-product',
+		'swc-single-product-tabs',
+	);
+
+	foreach ( $scripts as $script ) {
+
+		if ( wp_script_is( $script, 'enqueued' ) ) {
+
+			wp_script_add_data(
+				$script,
+				'defer',
+				true
+			);
+
+		}
+
+	}
 
 }
 
