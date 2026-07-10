@@ -28,7 +28,7 @@ if ( ! empty( $gallery ) ) {
 
 	<!-- Mobile Carousel -->
 
-	<div class="lg:hidden">
+	<div class="lg:hidden m-0">
 
         <div
             id="swc-mobile-gallery"
@@ -38,7 +38,7 @@ if ( ! empty( $gallery ) ) {
 
                 <div class="min-w-full snap-center">
 
-                    <div class="bg-white rounded-3xl p-4">
+                    <div class="bg-white rounded-3xl p-3">
 
                         <?php
 
@@ -69,7 +69,7 @@ if ( ! empty( $gallery ) ) {
 
 		<div
 			id="swc-main-image"
-			class="bg-white rounded-3xl p-8 shadow-sm">
+			class="w-lg bg-white rounded-3xl p-8 shadow-sm">
 
 			<img
 				id="swc-product-main-image"
@@ -81,7 +81,7 @@ if ( ! empty( $gallery ) ) {
 
 		<?php if ( count( $images ) > 1 ) : ?>
 
-			<div class="grid grid-cols-6 gap-3 mt-4">
+			<div class="grid grid-cols-8 gap-3 mt-4">
 
 				<?php foreach ( $images as $image_id ) : ?>
 

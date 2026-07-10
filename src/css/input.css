@@ -480,6 +480,28 @@ button:disabled,
 
 }
 
+@media (max-width: 576px) {
+
+    .swc-btn-sm {
+        height: 26px;
+        width: 40%;
+        padding: 0 20px;
+        font-size: 12px;
+
+        position: absolute;
+        top: -12%;
+        right: 6px;
+    }
+
+    .swc-qty-wrapper {
+        position: absolute;
+        top: -12%;
+        right: 6px;
+        width: 65%;
+        height: 28px;
+    }
+}
+
 /*==================================================
 WooCommerce Buttons
 ==================================================*/

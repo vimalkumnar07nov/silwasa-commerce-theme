@@ -36,6 +36,7 @@ if ( ! $product || ! $product->is_visible() ) {
 						'class' => 'aspect-square mx-auto w-full object-contain',
 
 						'loading' => 'lazy',
+						'decoding'=> 'async',
 
 					)
 
@@ -53,11 +54,11 @@ if ( ! $product || ! $product->is_visible() ) {
 
 	</a>
 
-	<div class="space-y-1 p-2">
+	<div class="space-y-1 p-2 relative">
 
 		<?php get_template_part( 'template-parts/components/product-rating' ); ?>
 
-		<h6 class="line-clamp-2 text-[13px] font-medium leading-5 text-slate-800"">
+		<h6 class="line-clamp-2 text-[11px] sm:text-[13px] font-medium leading-5 text-slate-800"">
 
 			<a href="<?php the_permalink(); ?>">
 

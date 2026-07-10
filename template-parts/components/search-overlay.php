@@ -187,7 +187,7 @@ defined( 'ABSPATH' ) || exit;
 
 				id="swc-search-results"
 
-				class="grid grid-cols-2 gap-5 p-5 lg:grid-cols-4 lg:p-8">
+				class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 p-3 gap-1 sm:gap-2 md:gap-3 lg:p-5">
 
 			</div>
 

@@ -95,6 +95,34 @@ add_image_size(
 	true
 );
 
+add_image_size(
+    'swc-category',
+    400,
+    400,
+    true
+);
+
+add_image_size(
+    'swc-search',
+    150,
+    150,
+    true
+);
+
+add_image_size(
+    'swc-brand',
+    180,
+    180,
+    false
+);
+
+add_image_size(
+    'swc-mini-cart',
+    120,
+    120,
+    true
+);
+
 /*
 |--------------------------------------------------------------------------
 | Product Placeholder

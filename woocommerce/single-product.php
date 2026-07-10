@@ -27,7 +27,7 @@ while ( have_posts() ) :
 
 			</nav>
 
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
 				<?php
 				get_template_part(
