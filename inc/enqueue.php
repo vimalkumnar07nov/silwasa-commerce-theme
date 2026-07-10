@@ -184,6 +184,24 @@ function swc_enqueue_assets() {
 
 		);
 
+		wp_enqueue_script(
+
+			'swc-carousel',
+
+			get_template_directory_uri() . '/assets/js/carousel.js',
+
+			array(
+
+				'swc-main',
+
+			),
+
+			$version,
+
+			true
+
+		);
+
 	}
 
 	wp_enqueue_script(

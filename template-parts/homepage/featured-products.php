@@ -75,7 +75,7 @@ if ( ! $featured_products->have_posts() ) {
 
 		</div>
 
-		<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
+		<!-- <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
 
 			<?php
 
@@ -108,6 +108,69 @@ if ( ! $featured_products->have_posts() ) {
 				View All Products
 
 			</a>
+
+		</div> -->
+
+		<div class="relative">
+
+			<!-- Previous -->
+
+			<button
+				class="swc-carousel-prev hidden absolute left-0 top-1/2 z-20 hidden -translate-x-5 -translate-y-1/2 rounded-full border border-slate-200 bg-white p-3 shadow-lg transition hover:bg-green-600 hover:text-white lg:flex">
+
+				←
+
+			</button>
+
+			<!-- Next -->
+
+			<button
+				class="swc-carousel-next absolute right-0 top-1/2 z-20 hidden translate-x-5 -translate-y-1/2 rounded-full border border-slate-200 bg-white p-3 shadow-lg transition hover:bg-green-600 hover:text-white lg:flex">
+
+				→
+
+			</button>
+
+			<!-- Track -->
+
+			<div
+				class="swc-carousel overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar">
+
+				<div class="swc-carousel-track flex gap-4">
+
+					<?php
+
+					while ( $featured_products->have_posts() ) :
+
+						$featured_products->the_post();
+
+						global $product;
+
+						?>
+
+						<div class="swc-carousel-item shrink-0 snap-start">
+
+							<?php
+
+							get_template_part(
+								'template-parts/components/product-card'
+							);
+
+							?>
+
+						</div>
+
+					<?php
+
+					endwhile;
+
+					wp_reset_postdata();
+
+					?>
+
+				</div>
+
+			</div>
 
 		</div>
 

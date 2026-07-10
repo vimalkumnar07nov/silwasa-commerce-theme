@@ -22,7 +22,7 @@ if ( ! $flash_products->have_posts() ) {
 }
 ?>
 
-<section class="py-14 bg-[#FFF8F2] overflow-hidden">
+<section class="py-3 lg:py-8 bg-[#FFF8F2] overflow-hidden">
 
 	<div class="max-w-[1440px] mx-auto px-4 lg:px-6">
 

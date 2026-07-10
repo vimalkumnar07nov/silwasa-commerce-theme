@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="max-w-[1440px] mx-auto">
 
-<div class="flex items-center gap-6 px-6 py-4">
+<div class="flex items-center gap-6 px-3 py-1">
 
 <div class="flex-shrink-0">
 
@@ -28,7 +28,9 @@ if ( has_custom_logo() ) {
 
 <span class="text-3xl font-bold text-green-600">
 
-Grocery
+	<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/India-Market-Logo-Green.png' ); ?>"
+		alt="India-Market-Logo-Green"
+		class="max-h-[60px] sm:max-h-[60px] lg:max-h-[75px] object-contain">
 
 </span>
 

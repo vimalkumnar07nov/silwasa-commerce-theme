@@ -89,7 +89,7 @@ body {
 
 h1 {
 
-    font-size: 32px;
+    font-size: 22px;
 
     font-weight: 700;
 
@@ -97,7 +97,7 @@ h1 {
 
 h2 {
 
-    font-size: 22px;
+    font-size: 18px;
 
     font-weight: 700;
 
@@ -105,7 +105,7 @@ h2 {
 
 h3 {
 
-    font-size: 18px;
+    font-size: 15px;
 
     font-weight: 600;
 
@@ -113,7 +113,7 @@ h3 {
 
 h4 {
 
-    font-size: 16px;
+    font-size: 13px;
 
     font-weight: 600;
 
@@ -122,6 +122,34 @@ h4 {
 small {
 
     font-size: 12px;
+
+}
+
+@media (max-width: 576px) {
+
+    h1 {
+
+        font-size: 20px;
+
+    }
+
+    h2 {
+
+        font-size: 16px;
+
+    }
+
+    h3 {
+
+        font-size: 14px;
+
+    }
+
+    h4 {
+
+        font-size: 12px;
+
+    }
 
 }
 
@@ -571,6 +599,222 @@ WooCommerce Buttons
     background: #f8fafc;
 
 }
+
+/* Hero Section */
+
+/*
+|--------------------------------------------------------------------------
+Feature Strip
+|--------------------------------------------------------------------------
+*/
+
+.swc-feature-strip {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+}
+
+.swc-feature-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 6px;
+
+    background: #fff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    transition: all .3s ease;
+
+}
+
+.swc-feature-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: #22c55e;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+}
+
+@media(max-width:1023px) {
+
+    .swc-feature-strip {
+
+        display: flex;
+
+        overflow-x: auto;
+
+        gap: 12px;
+
+        scroll-snap-type: x mandatory;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
+
+        padding-bottom: 4px;
+
+    }
+
+    .swc-feature-strip::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+    .swc-feature-card {
+
+        flex: 0 0 70%;
+
+        scroll-snap-align: start;
+
+    }
+
+}
+
+@media(min-width:640px) and (max-width:1023px) {
+
+    .swc-feature-card {
+
+        flex-basis: 36%;
+
+    }
+
+}
+
+/*
+|--------------------------------------------------------------------------
+Reusable Product Carousel
+|--------------------------------------------------------------------------
+*/
+
+.swc-carousel {
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+}
+
+.swc-carousel::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+.swc-carousel-track {
+
+    display: flex;
+
+    gap: 16px;
+
+}
+
+.swc-carousel {
+
+    cursor: grab;
+
+}
+
+.swc-carousel.cursor-grabbing {
+
+    cursor: grabbing;
+
+}
+
+.swc-carousel {
+
+    scroll-behavior: smooth;
+
+}
+
+/* Desktop */
+.swc-carousel-item {
+    flex: 0 0 calc((100% - 80px) / 5.5);
+}
+
+/* Large Tablet */
+
+@media(max-width:1279px) {
+
+    .swc-carousel-item {
+
+        flex: 0 0 calc((100% - 48px) / 4);
+
+    }
+
+}
+
+/* Tablet */
+
+@media(max-width:1023px) {
+
+    .swc-carousel-item {
+
+        flex: 0 0 calc((100% - 36px) / 3.25);
+
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:767px) {
+
+    .swc-carousel-item {
+
+        flex: 0 0 calc((100% - 12px) / 2.25);
+
+    }
+
+}
+
+
+/* @media(max-width:1279px) {
+
+    .swc-carousel-item {
+
+        flex-basis: calc(25% - 12px);
+
+    }
+
+}
+
+@media(max-width:1023px) {
+
+    .swc-carousel-item {
+
+        flex-basis: calc(28.57% - 12px);
+
+    }
+
+}
+
+@media(max-width:767px) {
+
+    .swc-carousel-item {
+
+        flex-basis: 44.5%;
+
+    }
+
+} */
+
+
 
 /*==================================================
 Cards
