@@ -21,7 +21,7 @@ get_header();
 
 
 
-<div class="max-w-7xl mx-auto py-20">
+<!-- <div class="max-w-7xl mx-auto py-20">
 
     <h1 class="text-5xl font-bold text-green-600">
 
@@ -35,7 +35,7 @@ get_header();
 
     </p>
 
-</div>
+</div> -->
 
 <?php
 

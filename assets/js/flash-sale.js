@@ -1,45 +1,56 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const target = new Date();
+    const countdown = document.getElementById("swc-flash-countdown");
 
-    target.setHours(23);
-    target.setMinutes(59);
-    target.setSeconds(59);
+    if (!countdown) return;
 
-    function updateTimer() {
+    const endDate = countdown.dataset.end;
 
-        const now = new Date().getTime();
+    const target = new Date(endDate.replace(" ", "T"));
 
-        const distance = target.getTime() - now;
+    function updateCountdown() {
 
-        if (distance < 0) {
+        const now = new Date();
+
+        const distance = target - now;
+
+        if (distance <= 0) {
+
+            const section = countdown.closest("section");
+
+            if (section) {
+
+                section.style.display = "none";
+
+            }
 
             return;
 
         }
 
-        const hours = Math.floor(distance / (1000 * 60 * 60));
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        const h = document.getElementById("flash-hours");
+        document.getElementById("flash-days").textContent =
+            String(days).padStart(2, "0 d");
 
-        const m = document.getElementById("flash-minutes");
+        document.getElementById("flash-hours").textContent =
+            String(hours).padStart(2, "0 h  ");
 
-        const s = document.getElementById("flash-seconds");
+        document.getElementById("flash-minutes").textContent =
+            String(minutes).padStart(2, "0 m  ");
 
-        if (h) h.innerHTML = String(hours).padStart(2, "0");
-
-        if (m) m.innerHTML = String(minutes).padStart(2, "0");
-
-        if (s) s.innerHTML = String(seconds).padStart(2, "0");
-
+        document.getElementById("flash-seconds").textContent =
+            String(seconds).padStart(2, "0 s  ");
     }
 
-    updateTimer();
+    updateCountdown();
 
-    setInterval(updateTimer, 1000);
+    setInterval(updateCountdown, 1000);
 
 });

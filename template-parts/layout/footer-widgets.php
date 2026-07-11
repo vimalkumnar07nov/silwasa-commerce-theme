@@ -22,7 +22,9 @@ defined( 'ABSPATH' ) || exit;
 
 					<div class="text-4xl font-black text-green-400">
 
-						Grocery<span class="text-white">Mart</span>
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/India-Market-Logo-white.png' ); ?>"
+						alt="India-Market-Logo-Green"
+						class="max-h-[60px] sm:max-h-[60px] lg:max-h-[75px] object-contain">
 
 					</div>
 
@@ -216,7 +218,7 @@ defined( 'ABSPATH' ) || exit;
 
 				© <?php echo date('Y'); ?>
 
-				GroceryMart.
+				India Market.
 
 				All Rights Reserved.
 

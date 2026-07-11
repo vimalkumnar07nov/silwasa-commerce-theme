@@ -783,38 +783,29 @@ Reusable Product Carousel
 
 }
 
+/* Sale Countdown */
+.swc-count-box {
 
-/* @media(max-width:1279px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .swc-carousel-item {
+    min-width: 30px;
+    height: 28px;
 
-        flex-basis: calc(25% - 12px);
+    border-radius: 8px;
 
-    }
+    background: #ffffff;
+
+    color: #dc2626;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    border: 1px solid #fecaca;
 
 }
-
-@media(max-width:1023px) {
-
-    .swc-carousel-item {
-
-        flex-basis: calc(28.57% - 12px);
-
-    }
-
-}
-
-@media(max-width:767px) {
-
-    .swc-carousel-item {
-
-        flex-basis: 44.5%;
-
-    }
-
-} */
-
-
 
 /*==================================================
 Cards

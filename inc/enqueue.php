@@ -202,6 +202,20 @@ function swc_enqueue_assets() {
 
 		);
 
+		wp_enqueue_script(
+
+			'swc-flash-sale',
+
+			get_template_directory_uri() . '/assets/js/flash-sale.js',
+
+			array( 'swc-main' ),
+
+			$version,
+
+			true
+
+		);
+
 	}
 
 	wp_enqueue_script(
